@@ -2,7 +2,7 @@ package bean;
 
 public enum EnumLogradouro
 {
-  RUA,  AV,  PRACA,  ALAMEDA,  OUTROS;
+  RUA, R, AV, AVENIDA, PCA, PRACA, AL, ALAMEDA, TRAVESSA, TRA;
   
   private EnumLogradouro() {}
 }
