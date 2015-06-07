@@ -1,5 +1,7 @@
 package bean;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,6 +25,9 @@ public class Servico implements IBabetteUnhasEntity{
 	
 	@Column(name="DURACAO_MEDIA_EM_MINUTOS")
 	private Byte duracaoMediaEmMinutos;
+	
+	@Column(name="PRECO")
+	private BigDecimal preco;
 	
 	public Servico() {
 	}
@@ -51,9 +56,19 @@ public class Servico implements IBabetteUnhasEntity{
 		this.duracaoMediaEmMinutos = duracaoMediaEmMinutos;
 	}
 
+	public BigDecimal getPreco() {
+		return preco;
+	}
+
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
+	}
+
 	@Override
 	public String toString() {
 		return "Servico [id=" + id + ", nome=" + nome
-				+ ", duracaoMediaEmMinutos=" + duracaoMediaEmMinutos + "]";
+				+ ", duracaoMediaEmMinutos=" + duracaoMediaEmMinutos
+				+ ", preco=" + preco + "]";
 	}
+
 }
