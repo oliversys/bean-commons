@@ -5,6 +5,7 @@
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
@@ -17,9 +18,9 @@ import javax.persistence.TemporalType;
  {
    private static final long serialVersionUID = -3466524441164651559L;
    
-   @GeneratedValue
    @Id
-   @Column(name="COMENTARIO_ID",columnDefinition="BIGINT NOT NULL AUTO_INCREMENT")   
+   @Column(name="COMENTARIO_ID")
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Long id;
 
    @Column(name="MENSAGEM")

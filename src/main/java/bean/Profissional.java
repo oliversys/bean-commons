@@ -1,13 +1,10 @@
 package bean;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -32,9 +29,6 @@ public class Profissional implements IBabetteUnhasEntity{
 	
 	@Column(name = "AVALIACAO")
 	private Float avaliacao;
-	
-	@OneToMany
-	private List<Servico> servicos;
 	
 	public Profissional() {
 	}
@@ -79,7 +73,6 @@ public class Profissional implements IBabetteUnhasEntity{
 	public String toString() {
 		return "Profissional [id=" + id + ", nome=" + nome + ", urlFoto="
 				+ urlFoto + ", cpf=" + cpf + ", avaliacao=" + avaliacao
-				+ ", servicos=" + servicos + "]";
+				+ "]";
 	}
-
 }

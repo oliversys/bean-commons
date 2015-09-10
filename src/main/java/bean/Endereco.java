@@ -14,7 +14,7 @@ import javax.persistence.Enumerated;
    @Enumerated(EnumType.STRING)
    @Column(name="END_LOGRADOURO")
    private EnumLogradouro logradouro;
-   @Column(name="END_NOME_RUA",columnDefinition="VARCHAR(10)")
+   @Column(name="END_NOME_RUA")
    private String nomeRua;
    @Column(name="END_NUM_RUA")
    private Integer numero;
@@ -87,9 +87,71 @@ import javax.persistence.Enumerated;
    {
      return "Endereco [CEP=" + this.CEP + ", logradouro=" + this.logradouro + ", nomeRua=" + this.nomeRua + ", numero=" + this.numero + ", complemento=" + this.complemento + ", bairro=" + this.bairro + ", cidade=" + this.cidade + ", estado=" + this.estado + "]";
    }
-    
-   public Object getId()
-   {
-     return null;
-   }
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((CEP == null) ? 0 : CEP.hashCode());
+		result = prime * result + ((bairro == null) ? 0 : bairro.hashCode());
+		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
+		result = prime * result
+				+ ((complemento == null) ? 0 : complemento.hashCode());
+		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
+		result = prime * result
+				+ ((logradouro == null) ? 0 : logradouro.hashCode());
+		result = prime * result + ((nomeRua == null) ? 0 : nomeRua.hashCode());
+		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Endereco other = (Endereco) obj;
+		if (CEP == null) {
+			if (other.CEP != null)
+				return false;
+		} else if (!CEP.equals(other.CEP))
+			return false;
+		if (bairro == null) {
+			if (other.bairro != null)
+				return false;
+		} else if (!bairro.equals(other.bairro))
+			return false;
+		if (cidade == null) {
+			if (other.cidade != null)
+				return false;
+		} else if (!cidade.equals(other.cidade))
+			return false;
+		if (complemento == null) {
+			if (other.complemento != null)
+				return false;
+		} else if (!complemento.equals(other.complemento))
+			return false;
+		if (estado == null) {
+			if (other.estado != null)
+				return false;
+		} else if (!estado.equals(other.estado))
+			return false;
+		if (logradouro != other.logradouro)
+			return false;
+		if (nomeRua == null) {
+			if (other.nomeRua != null)
+				return false;
+		} else if (!nomeRua.equals(other.nomeRua))
+			return false;
+		if (numero == null) {
+			if (other.numero != null)
+				return false;
+		} else if (!numero.equals(other.numero))
+			return false;
+		return true;
+	}
+
  }

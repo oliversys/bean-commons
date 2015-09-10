@@ -1,5 +1,6 @@
 package bean;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -18,10 +19,10 @@ import javax.persistence.Table;
 public class Estabelecimento implements IPedePizzaEntity,IBabetteUnhasEntity{
 	
 	private static final long serialVersionUID = 2785986018808117662L;
-
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	
 	@Id
-	@Column(name="ESTABELECIMENTO_ID",columnDefinition="BIGINT NOT NULL AUTO_INCREMENT")
+	@Column(name="ESTABELECIMENTO_ID")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	protected Long id;
 
 	@Column(name="NOME")
@@ -30,9 +31,13 @@ public class Estabelecimento implements IPedePizzaEntity,IBabetteUnhasEntity{
 	@Embedded
 	protected Endereco endereco;
 	
-	@OneToMany(cascade={javax.persistence.CascadeType.ALL}, fetch=FetchType.EAGER)
+//	@OneToMany(cascade={javax.persistence.CascadeType.ALL}, fetch=FetchType.EAGER)
+//	@JoinColumn(name="COMENTARIO_ID")
+//	protected Set<Comentario> comentarios = new HashSet<Comentario>();
+	
+	@OneToMany(cascade={javax.persistence.CascadeType.ALL})
 	@JoinColumn(name="COMENTARIO_ID")
-	protected Set<Comentario> comentarios;
+	protected Set<Comentario> comentarios = new HashSet<Comentario>();
 	
 	@Column(name="AVALIACAO")
 	protected Float avaliacao = Float.valueOf(1.0F);
@@ -101,10 +106,9 @@ public class Estabelecimento implements IPedePizzaEntity,IBabetteUnhasEntity{
 
 	@Override
 	public String toString() {
-		return "Estabelecimento [id=" + id + ", nome="
-				+ nome + ", endereco=" + endereco + ", comentarios="
-				+ comentarios + ", avaliacao=" + avaliacao + ", diaHoraFuncionamento="
-				+ diaHoraFuncionamento + ", logoURL=" + logoURL + "]";
+		return "Estabelecimento [id=" + id + ", nome=" + nome + ", endereco="
+				+ endereco + ", comentarios=" + comentarios + ", avaliacao="
+				+ avaliacao + ", diaHoraFuncionamento=" + diaHoraFuncionamento
+				+ ", logoURL=" + logoURL + ", + ]";
 	}
-
 }

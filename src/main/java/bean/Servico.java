@@ -1,12 +1,13 @@
 package bean;
 
-import java.math.BigDecimal;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,9 +16,9 @@ public class Servico implements IBabetteUnhasEntity{
 
 	private static final long serialVersionUID = 2953820420650238150L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id	
 	@Column(name="SERVICO_ID")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(name="NOME")
@@ -25,10 +26,7 @@ public class Servico implements IBabetteUnhasEntity{
 	
 	@Column(name="DURACAO_MEDIA_EM_MINUTOS")
 	private Byte duracaoMediaEmMinutos;
-	
-	@Column(name="PRECO")
-	private BigDecimal preco;
-	
+		
 	public Servico() {
 	}
 
@@ -56,19 +54,11 @@ public class Servico implements IBabetteUnhasEntity{
 		this.duracaoMediaEmMinutos = duracaoMediaEmMinutos;
 	}
 
-	public BigDecimal getPreco() {
-		return preco;
-	}
-
-	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
-	}
-
 	@Override
 	public String toString() {
 		return "Servico [id=" + id + ", nome=" + nome
 				+ ", duracaoMediaEmMinutos=" + duracaoMediaEmMinutos
-				+ ", preco=" + preco + "]";
+				+ "]";
 	}
 
 }
